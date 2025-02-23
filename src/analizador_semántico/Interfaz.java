@@ -34,6 +34,7 @@ public class Interfaz extends javax.swing.JFrame {
         JLErrores = new javax.swing.JLabel();
         JBAnalizar = new javax.swing.JButton();
         JBLimpiar = new javax.swing.JButton();
+        JLLinea = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Analizador Semántico");
@@ -42,7 +43,6 @@ public class Interfaz extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1132, 590));
         setResizable(false);
 
-        JText.setBackground(new java.awt.Color(255, 255, 255));
         JText.setColumns(20);
         JText.setRows(5);
         jScrollPane1.setViewportView(JText);
@@ -196,55 +196,69 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        JLLinea.setForeground(new java.awt.Color(102, 102, 102));
+        JLLinea.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        JLLinea.setText("<html><div align='right'>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25</div></html>");
+        JLLinea.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(JLEntrada)
-                .addGap(196, 196, 196)
-                .addComponent(JLSimbolos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JLErrores)
-                .addGap(252, 252, 252))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
+                .addComponent(JLLinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(JBAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addComponent(JBAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 8, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(JLEntrada)
+                        .addGap(198, 198, 198)
+                        .addComponent(JLSimbolos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JLErrores)
+                        .addGap(266, 266, 266))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLEntrada)
-                    .addComponent(JLSimbolos)
-                    .addComponent(JLErrores))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JBLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                    .addComponent(JBAnalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JLEntrada)
+                            .addComponent(JLSimbolos)
+                            .addComponent(JLErrores))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JBAnalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(38, 38, 38))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JLLinea, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         getAccessibleContext().setAccessibleDescription("");
 
-        setSize(new java.awt.Dimension(1148, 598));
+        setSize(new java.awt.Dimension(1176, 598));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,7 +276,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_JBLimpiarActionPerformed
 
     private void JBAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAnalizarActionPerformed
-// Limpiar solo las tablas, no el JText
+        // Limpiar solo las tablas, no el JText
         DefaultTableModel modeloSimb = (DefaultTableModel) JTableSimbolos.getModel();
         modeloSimb.setRowCount(0); // Limpiar la Tabla de Símbolos
 
@@ -278,12 +292,17 @@ public class Interfaz extends javax.swing.JFrame {
         columnModel.getColumn(2).setMaxWidth(60);
 
 // Obtener el texto del JText
-        String texto = JText.getText();
+        String texto = JText.getText().replaceAll(" ", ""); // replaceAll elimina los espacios
         String[] lineas = texto.split("\n");
 
 // Variables para el análisis
         int numError = 1; // Contador de errores
         java.util.Map<String, String> tablaVariables = new java.util.HashMap<>(); // Almacena variables y sus tipos
+
+// Expresiones regulares para detectar tipos de datos en valores literales
+        String regexEntero = "^[0-9]+$";
+        String regexReal = "^[0-9]+\\.[0-9]+$";
+        String regexCadena = "^\".*\"$";
 
 // Recorrer cada línea del texto para procesar declaraciones
         for (int i = 0; i < lineas.length; i++) {
@@ -319,9 +338,8 @@ public class Interfaz extends javax.swing.JFrame {
                 String expresion = partes[1].trim();
 
                 // Verificar si la variable asignada está definida en el mapa
-                String tipoVarAsignada = tablaVariables.get(varAsignada); // Obtener el tipo de la variable asignada
+                String tipoVarAsignada = tablaVariables.get(varAsignada);
 
-                // Verificar si tipoVarAsignada es null, lo que indica que la variable no está definida
                 if (tipoVarAsignada == null) {
                     modeloErr.addRow(new Object[]{"ERSem" + numError++, varAsignada, i + 1, "Variable Indefinida"});
                 } else {
@@ -329,8 +347,19 @@ public class Interfaz extends javax.swing.JFrame {
                     String[] elementos = expresion.split("[+\\-*/]");
                     for (String elem : elementos) {
                         elem = elem.trim().replace(";", "");
-                        if (!elem.isEmpty() && !tablaVariables.containsKey(elem)) {
-                            modeloErr.addRow(new Object[]{"ERSem" + numError++, elem, i + 1, "Variable Indefinida"});
+
+                        if (!elem.isEmpty()) {
+                            if (tablaVariables.containsKey(elem)) {
+                                // Variable conocida, no hacer nada
+                            } else if (elem.matches(regexEntero)) {
+                                modeloSimb.addRow(new Object[]{elem, "ent->"});
+                            } else if (elem.matches(regexReal)) {
+                                modeloSimb.addRow(new Object[]{elem, "rea->"});
+                            } else if (elem.matches(regexCadena)) {
+                                modeloSimb.addRow(new Object[]{elem, "cad->"});
+                            } else {
+                                modeloErr.addRow(new Object[]{"ERSem" + numError++, elem, i + 1, "Variable Indefinida"});
+                            }
                         }
                     }
 
@@ -338,50 +367,45 @@ public class Interfaz extends javax.swing.JFrame {
                     for (String elem : elementos) {
                         elem = elem.trim().replace(";", "");
 
-                        // Verificar que el elemento sea una variable registrada
+                        String tipoElem;
                         if (tablaVariables.containsKey(elem)) {
-                            String tipoElem = tablaVariables.get(elem);
-
-                            // Operaciones entre Enteros
-                            if (tipoVarAsignada.equals("ent->") && tipoElem.equals("ent->") && (linea.contains("+") || linea.contains("-") || linea.contains("*") || linea.contains("="))) {
-                                // OK: enteros pueden operar entre sí
-                            } // Operaciones entre Reales y Enteros
-                            else if (tipoVarAsignada.equals("rea->") && tipoElem.equals("ent->") && (linea.contains("+") || linea.contains("-") || linea.contains("*") || linea.contains("/") || linea.contains("="))) {
-                                // OK: real con entero es válido
-                            } // Operaciones entre Reales
-                            else if (tipoVarAsignada.equals("rea->") && tipoElem.equals("rea->") && (linea.contains("+") || linea.contains("-") || linea.contains("*") || linea.contains("/") || linea.contains("="))) {
-                                // OK: reales pueden operar entre sí
-                            } // Operaciones entre Cadenas y Caracteres
-                            else if (tipoVarAsignada.equals("cad->") && (tipoElem.equals("cad->") || tipoElem.equals("car->")) && (linea.contains("+") || linea.contains("-") || linea.contains("="))) {
-                                // OK: cadenas pueden operar con cadenas y caracteres
-                            } // Si no es un caso válido, es un error
-                            else {
-                                modeloErr.addRow(new Object[]{"ERSem" + numError++, elem, i + 1, "Incompatibilidad de tipos " + tipoVarAsignada + " con " + tipoElem});
-                            }
+                            tipoElem = tablaVariables.get(elem);
+                        } else if (elem.matches(regexEntero)) {
+                            tipoElem = "ent->";
+                        } else if (elem.matches(regexReal)) {
+                            tipoElem = "rea->";
+                        } else if (elem.matches(regexCadena)) {
+                            tipoElem = "cad->";
+                        } else {
+                            continue; // Ignorar elementos no válidos
                         }
+
+                        // Verificar incompatibilidad de tipos
+                        if (!(tipoVarAsignada.equals("ent->") && tipoElem.equals("ent->"))
+                                && !(tipoVarAsignada.equals("rea->") && (tipoElem.equals("rea->") || tipoElem.equals("ent->")))
+                                && !(tipoVarAsignada.equals("cad->") && tipoElem.equals("cad->"))) {
+                            modeloErr.addRow(new Object[]{"ERSem" + numError++, elem, i + 1, "Incompatibilidad de tipos " + tipoVarAsignada + " con " + tipoElem});
+                        }
+
                     }
                 }
             }
-
         }
 
-// SEGUNDA PASADA: Añadir operadores al final del análisis, en orden de izquierda a derecha
-        java.util.Set<String> operadores = new java.util.HashSet<>(); // Para almacenar operadores
+// SEGUNDA PASADA: Añadir operadores
+        java.util.Set<String> operadores = new java.util.HashSet<>();
 
-// Recorrer todo el texto de izquierda a derecha para asegurarse de añadir todos los operadores
         for (int i = 0; i < lineas.length; i++) {
             String linea = lineas[i].trim();
 
-            // Recorrer cada carácter de la línea para procesar operadores
             for (int j = 0; j < linea.length(); j++) {
                 char c = linea.charAt(j);
 
-                // Verificar si es un operador y si ya ha sido procesado
                 if (c == '+' && !operadores.contains("+")) {
                     modeloSimb.addRow(new Object[]{"+", ""});
                     operadores.add("+");
                 }
-                if (c == '-' && !linea.substring(j).startsWith("->") && !operadores.contains("-")) { // Evitar el caso "ent->"
+                if (c == '-' && !linea.substring(j).startsWith("->") && !operadores.contains("-")) {
                     modeloSimb.addRow(new Object[]{"-", ""});
                     operadores.add("-");
                 }
@@ -404,26 +428,6 @@ public class Interfaz extends javax.swing.JFrame {
                 if (c == ';' && !operadores.contains(";")) {
                     modeloSimb.addRow(new Object[]{";", ""});
                     operadores.add(";");
-                }
-            }
-        }
-// TERCERA PASADA: Detectar variables indefinidas recorriendo nuevamente el texto
-        for (int i = 0; i < lineas.length; i++) {
-            String linea = lineas[i].trim();
-            String[] tokens = linea.split("[\\s=+\\-*/;,]+"); // Dividir la línea en posibles identificadores
-
-            for (String token : tokens) {
-                token = token.trim();
-                if (!token.isEmpty() && token.matches("[a-zA-Zá-úÁ-Ú][a-zA-Z0-9á-úÁ-Ú]*")) {
-                    // Ignorar palabras clave reservadas
-                    if (token.equals("ent") || token.equals("cad") || token.equals("rea")) {
-                        continue;
-                    }
-
-                    // Si la variable no está en tablaVariables, es indefinida
-                    if (!tablaVariables.containsKey(token)) {
-                        modeloSimb.addRow(new Object[]{token, ""});
-                    }
                 }
             }
         }
@@ -456,6 +460,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton JBLimpiar;
     private javax.swing.JLabel JLEntrada;
     private javax.swing.JLabel JLErrores;
+    private javax.swing.JLabel JLLinea;
     private javax.swing.JLabel JLSimbolos;
     private javax.swing.JTable JTableErrores;
     private javax.swing.JTable JTableSimbolos;
