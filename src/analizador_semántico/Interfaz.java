@@ -431,6 +431,26 @@ public class Interfaz extends javax.swing.JFrame {
                 }
             }
         }
+        // TERCERA PASADA: Detectar variables indefinidas recorriendo nuevamente el texto
+        for (int i = 0; i < lineas.length; i++) {
+            String linea = lineas[i].trim();
+            String[] tokens = linea.split("[\\s=+\\-*/;,]+"); // Dividir la línea en posibles identificadores
+
+            for (String token : tokens) {
+                token = token.trim();
+                if (!token.isEmpty() && token.matches("[a-zA-Zá-úÁ-Ú][a-zA-Z0-9á-úÁ-Ú]*")) {
+                    // Ignorar palabras clave reservadas
+                    if (token.equals("ent") || token.equals("cad") || token.equals("rea")) {
+                        continue;
+                    }
+
+                    // Si la variable no está en tablaVariables, es indefinida
+                    if (!tablaVariables.containsKey(token)) {
+                        modeloSimb.addRow(new Object[]{token, ""});
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_JBAnalizarActionPerformed
 
     /**
