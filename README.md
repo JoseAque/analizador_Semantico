@@ -53,7 +53,7 @@ Cadena = Carácter OPA Carácter
 - **Incompatibilidad de tipos `cad->`** (cuando la operación no es compatible con el tipo)  
 - **Variable Indefinida** (cuando una variable no ha sido definida)  
 
-### Tablas  
+## Tablas  
 Se cuenta con dos tablas:  
 1. **Tabla de símbolos (`JTableSimbolos`)** con las columnas:  
    - `Lexema`  
