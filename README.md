@@ -3,6 +3,7 @@
 ## Reglas del Análisis  
 
 El programa analiza el texto escrito en el cuadro de texto (`JText`) y añade los resultados del análisis a las tablas.  
+Debe identificar la declaración de Palabras Reservadas, Identificadores/Variables, Literales, la línea en la que se escribieron y los operadores utilizados.  
 
 ### Palabras Reservadas  
 Las palabras reservadas del analizador son:  
@@ -10,23 +11,16 @@ Las palabras reservadas del analizador son:
 - `rea->` (equivalente a `float`)  
 - `cad->` (equivalente a `String`)  
 
-### Identificadores/Variables  
+### Identificadores/Variables
 La regla de los identificadores/variables es:  
-- `[a-zA-Zá-úÁ-Ú][a-zA-Z0-9á-úÁ-Ú]*`  
+- `[a-zA-Zá-úÁ-Ú][a-zA-Z0-9á-úÁ-Ú]*`
+  
+### Literales
+Detecta valores literales y los asigna correctamente:
 
-El programa debe identificar la declaración de identificadores, la línea en la que se escribieron y los operadores utilizados.  
-
-### Tablas  
-Se cuenta con dos tablas:  
-1. **Tabla de símbolos (`JTableSimbolos`)** con las columnas:  
-   - `Lexema`  
-   - `Tipo`  
-   - (Las palabras reservadas y operadores dejan en blanco la celda de lexema)  
-2. **Tabla de errores (`JTableErrores`)** con las columnas:  
-   - `Token Error` (ERSem1, ERSem2, ERSem3, etc.)  
-   - `Lexema`  
-   - `Línea`  
-   - `Descripción`  
+- `10` ➝ `ent->`
+- `10.5` ➝ `rea->`
+- `"Hola"` ➝ `cad->`
 
 ## Reglas de Operaciones  
 
@@ -59,8 +53,21 @@ Cadena = Carácter OPA Carácter
 - **Incompatibilidad de tipos `cad->`** (cuando la operación no es compatible con el tipo)  
 - **Variable Indefinida** (cuando una variable no ha sido definida)  
 
+### Tablas  
+Se cuenta con dos tablas:  
+1. **Tabla de símbolos (`JTableSimbolos`)** con las columnas:  
+   - `Lexema`  
+   - `Tipo`  
+   - (Las palabras reservadas y operadores dejan en blanco la celda de lexema)  
+2. **Tabla de errores (`JTableErrores`)** con las columnas:  
+   - `Token Error` (ERSem1, ERSem2, ERSem3, etc.)  
+   - `Lexema`  
+   - `Línea`  
+   - `Descripción`
+   - 
 ## Botones  
-- **`JBLimpiar`**: Limpia el `JText` y ambas tablas.  
+Se cuenta con dos botones:  
+- **`Limpiar`**: Limpia el `JText` y ambas tablas.  
 - **`Analizar`**: Inicia el análisis y limpia los resultados previos.  
 
 ---
@@ -74,7 +81,6 @@ ent-> Num1, Num2, Num3;
 rea-> Flotante1, Flotante2;  
 Flotante1 = Flotante2 + Num1;  
 ```
-
 ### Acción  
 Pulsar botón **"Analizar"**  
 
@@ -99,7 +105,7 @@ Pulsar botón **"Analizar"**
 |            |        |      |                                      |
 
 ### Interfaz
-![image](https://github.com/user-attachments/assets/d94a9414-1342-4104-ad31-65c16e0cef32)
+![image](https://github.com/user-attachments/assets/a41f3030-e2f0-40c8-b62e-2c9037aa9e6c)
 
 ---
 
@@ -110,7 +116,6 @@ ent-> Num1, Num2 ,Num3;
 cad-> Nombre;  
 Num3 = Nombre * Num1;  
 ```
-
 ### Acción  
 Pulsar botón **"Analizar"**  
 
@@ -123,18 +128,20 @@ Pulsar botón **"Analizar"**
 | `Num3`     | ent->  |  
 | `cad->`    |        |  
 | `Nombre`   | cad->  |  
+| `10.3`     | rea->  |  
 | `,`        |        |  
 | `;`        |        |  
 | `=`        |        |  
 | `*`        |        |  
 
 ### Tabla de Errores  
-| Token Error | Lexema  | Línea | Descripción                          |  
-|------------|--------|------|--------------------------------------|  
+| Token Error | Lexema  | Línea | Descripción                                 | 
+|------------|--------|------|------------------------------------------------|  
 | ERSem1     | Nombre | 3    | Incompatibilidad de tipos `ent->` con `cad->`  |  
+| ERSem2     | 10.3   | 3    | Incompatibilidad de tipos `ent->` con `rea->`  |  
 
 ### Interfaz
-![image](https://github.com/user-attachments/assets/3342215d-720f-4432-ab51-cf0747261ebc)
+![image](https://github.com/user-attachments/assets/2c524ab8-efc9-468b-9871-31d7403734e4)
 
 ---
 
@@ -144,9 +151,8 @@ Pulsar botón **"Analizar"**
 ent-> ITA5, ITA67, ITA87;  
 cad-> ITA123;  
 ITA87 = ITA123 * ITA5;  
-ITA67 = ITA877;  
+ITA67 = ITA877 / 34.128 + "Hola"; 
 ```
-
 ### Tabla de Símbolos  
 | Lexema   | Tipo   |  
 |---------|-------|  
@@ -160,16 +166,20 @@ ITA67 = ITA877;
 | `;`     |       |
 | `=`     |       |  
 | `*`     |       | 
+| `/`     |       | 
+| `+`     |       | 
 | `ITA877`|       |  
 
 ### Tabla de Errores  
-| Token Error | Lexema  | Línea | Descripción                                   |  
+| Token Error | Lexema  | Línea | Descripción                                |  
 |------------|--------|------|-----------------------------------------------|  
 | ERSem1     | ITA123 | 3    | Incompatibilidad de tipos `ent->` con `cad->` |  
-| ERSem2     | ITA877 | 4    | Variable Indefinida                          |  
+| ERSem2     | ITA877 | 4    | Variable Indefinida                           |  
+| ERSem3	    |34.128	 | 4    | Incompatibilidad de tipos ent-> con rea->     |  
+| ERSem4	    |"Hola"  |	4    | Incompatibilidad de tipos ent-> con cad->     |  
 
 ### Interfaz
-![image](https://github.com/user-attachments/assets/3239a93f-6c4b-45d7-b3e2-c9e641cbba7c)
+![image](https://github.com/user-attachments/assets/37dce470-ece1-4d1d-80fb-26a380c9f484)
 
 ---
 
@@ -204,4 +214,4 @@ ITA877 = ITA67;
 | ERSem2     | ITA877 | 4    | Variable Indefinida                          |
 
 ### Interfaz
-![image](https://github.com/user-attachments/assets/a5c982b2-c97e-41e3-aa99-82f4865e353d)
+![image](https://github.com/user-attachments/assets/1efc3912-b868-4c5a-9fe5-8021ca0eabba)
