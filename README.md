@@ -114,7 +114,7 @@ Pulsar botón **"Analizar"**
 ```
 ent-> Num1, Num2 ,Num3;  
 cad-> Nombre;  
-Num3 = Nombre * Num1;  
+Num3 = Nombre * Num1 + 10.3;  
 ```
 ### Acción  
 Pulsar botón **"Analizar"**  
