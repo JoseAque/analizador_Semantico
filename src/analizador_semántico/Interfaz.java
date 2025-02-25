@@ -292,7 +292,8 @@ public class Interfaz extends javax.swing.JFrame {
         columnModel.getColumn(2).setMaxWidth(60);
 
 // Obtener el texto del JText
-        String texto = JText.getText().replaceAll(" ", ""); // replaceAll elimina los espacios
+        String texto = ""; //Limpia la variable texto para eliminar los posibles residuos de un analisis anterior
+        texto = JText.getText().replaceAll(" ", ""); // replaceAll elimina los espacios
         String[] lineas = texto.split("\n");
 
 // Variables para el análisis
@@ -303,8 +304,10 @@ public class Interfaz extends javax.swing.JFrame {
         String regexEntero = "^[0-9]+$";
         String regexReal = "^[0-9]+\\.[0-9]+$";
         String regexCadena = "^\".*\"$";
-
-// Recorrer cada línea del texto para procesar declaraciones
+        
+        
+// PRIMERA PASADA: Analisis completo
+        // Recorrer cada línea del texto para procesar declaraciones
         for (int i = 0; i < lineas.length; i++) {
             String linea = lineas[i].trim();
 
@@ -392,7 +395,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         }
 
-// SEGUNDA PASADA: Añadir operadores
+// SEGUNDA PASADA: Añadir operadores despues de analizar
         java.util.Set<String> operadores = new java.util.HashSet<>();
 
         for (int i = 0; i < lineas.length; i++) {
@@ -431,7 +434,9 @@ public class Interfaz extends javax.swing.JFrame {
                 }
             }
         }
-        // TERCERA PASADA: Detectar variables indefinidas recorriendo nuevamente el texto
+// TERCERA PASADA: Detectar variables indefinidas recorriendo nuevamente el texto y añádirlas al final de la tabla
+        // Conjunto para almacenar variables indefinidas ya registradas
+        java.util.Set<String> variablesIndefinidas = new java.util.HashSet<>();
         for (int i = 0; i < lineas.length; i++) {
             String linea = lineas[i].trim();
             String[] tokens = linea.split("[\\s=+\\-*/;,]+"); // Dividir la línea en posibles identificadores
@@ -444,9 +449,10 @@ public class Interfaz extends javax.swing.JFrame {
                         continue;
                     }
 
-                    // Si la variable no está en tablaVariables, es indefinida
-                    if (!tablaVariables.containsKey(token)) {
+                    // Si la variable no está en tablaVariables y no ha sido agregada antes, es indefinida
+                    if (!tablaVariables.containsKey(token) && !variablesIndefinidas.contains(token)) {
                         modeloSimb.addRow(new Object[]{token, ""});
+                        variablesIndefinidas.add(token); // Marcarla como agregada
                     }
                 }
             }
